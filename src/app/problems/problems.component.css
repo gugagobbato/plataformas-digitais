@@ -1,0 +1,27 @@
+.new-problem {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.new-problem:hover {
+    font-weight: bold;
+}
+
+.problem-card {
+    background-color: #e8e8e8;
+    border-radius: 5%;
+}
+
+.problem-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.problem-description {
+    font-size: .9rem;
+    color: rgb(97, 95, 95);
+}
+
+.number-answers-problem {
+    font-size: 0.8rem;
+}

@@ -1,0 +1,14 @@
+AVISO: O site encontra-se em desenvolvimento, portanto, exceções não tratadas e/ou funções sem retorno/não funcionando podem ser esperadas.
+
+IMPLEMENTADO: Página de login, cadastro e de recuperação de senha.
+
+Como usar:
+
+->O site é auto-explicativo, efetue o loguin, ou cadastro, e teste-o.
+
+Como testar:
+
+->Utilizando-se do GITHUB Desktop (a fim de facilitar), importar o Diretorio "plataformas-digitais", compartilhado;
+->Abrir ultilizando-se, preferencialmente o VSCODE;
+->Necessária a instalação do NPM, através do CONSOLE GIT BASH;
+->Executar o comando "ng serve" a partir do VSCODE. Será criado um link localhost (servidor dev), copiá-lo e colá-lo em algum navegador de preferência.

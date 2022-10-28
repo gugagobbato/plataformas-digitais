@@ -1,1 +1,64 @@
-<p>problems works!</p>
+<div class="container-fluid">
+
+    <div class="row px-2 my-2">
+
+        <div class="col-12 col-md-5">
+            <label class="mb-0" for="search-by">Buscar por</label>
+            <input class="form-control" type="text" name="search-by" [(ngModel)]="searchBy">
+        </div>
+    
+        <div class="col-12 col-md-5">
+            <label class="mb-0" for="category">Categoria</label>
+            <select class="form-control" name="category" id="category" [(ngModel)]="categoryId">
+                <option *ngFor="let c of categories" [ngValue]="c.id">{{c.description}}</option>
+            </select>
+        </div>
+    
+        <div class="col-12 col-md-2 mt-4">
+            <button class="btn btn-primary btn-block" (click)="getProblems()">Buscar</button>
+        </div>
+    
+    </div>
+    
+    <div class="row text-right justify-content-end mr-1">
+        <div class="col-8 col-md-3 col-xl-2">
+            <span class="text-dark new-problem" (click)="openNewProblem()">+ Novo problema</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center mt-3">
+    
+            <div *ngIf="problems.length == 0 && !loading" class="col-12 col-md-6 mx-auto alert alert-danger" role="alert">
+                Nenhum problema encontrado para os filtros selecionados.
+            </div>
+           
+            <div class="col-12" *ngFor="let problem of problems">
+    
+                <div class="problem-card cursor-pointer jump-hover border my-2 px-2" (click)="selectProblem(problem)">
+                    <div class="problem-title my-1">
+                        {{problem.title}}
+                    </div>
+    
+                    <div class="problem-description my-1">
+                        {{problem.description}}
+                    </div>
+
+                    <div class="problem-description my-1">
+                        <span class="font-weight-bold">Categoria: {{problem.category!.description}}</span>
+                    </div>
+    
+                    <div class="number-answers-problem text-primary my-1">
+                        Respostas: {{problem.number_answers}}
+                    </div>
+                </div>
+    
+            </div>
+    
+        </div>
+    </div>
+
+</div>
+
+<ng-template #template></ng-template>
+<ngx-loading [show]="loading" [config]="loadingConfig" [template]="template"></ngx-loading>

@@ -12,16 +12,16 @@ import { ProjectRegistrationComponent } from './projects/project-registration/pr
 import { ProjectVisualizationComponent } from './projects/project-visualization/project-visualization.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'signup', component: SignUpComponent },
+  { path: '', redirectTo: '/problems', pathMatch: 'full' },
+  { path: 'sign-up', component: SignUpComponent },
   { path: 'problems', component: ProblemsComponent },
   { path: 'problems/aproval-answers', component: ApprovalAnswersComponent },
   { path: 'problems/registration', component: ProblemRegistrationComponent },
-  { path: 'problems/visualization', component: ProblemVisualizationComponent },
+  { path: 'problems/visualization/:id', component: ProblemVisualizationComponent },
   { path: 'projects', component: ProjectsComponent },
-  { path: 'projects/approval-members', component: ApprovalProjectMembersComponent },
+  { path: 'projects/approval-members/:id', component: ApprovalProjectMembersComponent },
   { path: 'projects/registration', component: ProjectRegistrationComponent },
-  { path: 'projects/visualization', component: ProjectVisualizationComponent },
+  { path: 'projects/visualization/:id', component: ProjectVisualizationComponent },
 ];
 
 @NgModule({

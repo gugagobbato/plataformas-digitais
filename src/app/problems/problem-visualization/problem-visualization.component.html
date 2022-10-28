@@ -1,1 +1,76 @@
-<p>problem-visualization works!</p>
+<div class="container">
+
+    <div class="row mt-3 mt-md-5 mb-2">
+        <div class="col-12">
+            <div class="card-title-visualization border px-2">
+                <div class="problem-title my-1">
+                    {{problem!.title}}
+                </div>
+
+                <div class="text-primary mb-2">
+                    <img class="profile-photo" src="{{problem!.person.profile_photo}}" alt="Foto de perfil">
+                    <span class="ml-2">{{problem!.person.name}}</span>
+                </div>
+
+                <div class="problem-description my-1 pl-2">
+                    {{problem!.description}}
+                </div>
+
+                <div class="number-answers-problem text-primary my-2 pl-2">
+                    Respostas: {{problem!.number_answers}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-right justify-content-end">
+        <div class="col-8 col-md-3 col-xl-2">
+            <span class="text-dark new-problem" (click)="answerOpened = !answerOpened">Responder</span>
+        </div>
+    </div>
+
+    <div *ngIf="answerOpened" class="mb-2">
+        <div class="row justify-content-end">
+            <div class="col-12 col-md-10">
+                <textarea class="form-control" name="add-answer" id="add-answer" rows="4" [disabled]="disableAddAnswer" placeholder="Digite aqui a sua resposta" [(ngModel)]="addAnswer"></textarea>
+                <small *ngIf="!disableAddAnswer" class="text-danger">*Mínimo 20 caracteres</small>
+            </div>
+        </div>  
+
+        <div *ngIf="!disableAddAnswer" class="row justify-content-end">
+            <div class="col-12 col-md-10 text-center">
+                <button class="btn btn-sm btn-primary" [disabled]="addAnswer.trim().length < 20" (click)="sendToReview()">
+                    Enviar para análise
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-2 justify-content-end">
+        <div class="col-12 col-md-10" *ngFor="let answer of answers">
+
+            <div class="problem-card border my-2 px-2">
+
+                <div class="d-flex">
+                    <div class="text-primary"> 
+                        <img class="profile-photo my-1" src="{{answer.person.profile_photo}}" alt="Foto de perfil">
+                        <span class="ml-2">{{answer.person.name}}</span>
+                    </div>
+                    
+                    <div class="ml-3 pt-2" *ngIf="answer.right_answer">
+                        <fa-icon class="text-success" [icon]="faCheck"></fa-icon>
+                    </div>
+                </div>
+
+                <div class="problem-description my-1 pl-2">
+                    {{answer.answer}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #template></ng-template>
+<ngx-loading [show]="loading" [config]="loadingConfig" [template]="template"></ngx-loading>
